@@ -1,6 +1,18 @@
 local Multiverse = {}
 local timeout = 0
 
+DebugPrint = function(...)
+    if Config.DebugMode then
+        print("[ABP-Multiverse]",...)
+    end
+end
+
+if Config.DebugMode then
+    RegisterCommand('mv_verse', function() 
+        DebugPrint("Dimension:", MyDimension())
+    end)
+end
+
 MyDimension = function()
     return LocalPlayer.state.verse
 end
@@ -80,7 +92,9 @@ OnInteract = function(destPoint, verseId)
 end
 
 SetupMarkers = function()
+    DebugPrint("Setting Up Markers...")
     for index, verse in pairs(Config.Verse) do
+        DebugPrint("Setting Up Marker:", index)
 
         local markerA_config = verse.PointA.Marker
         local markerB_config = verse.PointB.Marker
@@ -160,3 +174,5 @@ SetupMarkers = function()
 end
 
 SetupMarkers()
+
+TriggerServerEvent('abp:Multiverse:SetPlayerInWorld', nil, 0)
