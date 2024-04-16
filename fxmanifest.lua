@@ -9,8 +9,8 @@ version "1.0.0"
 lua54 'yes'
 
 shared_scripts {
-	'shared/*.lua',
 	'@ox_lib/init.lua',
+	'shared/*.lua',
 }
 
 client_scripts {
