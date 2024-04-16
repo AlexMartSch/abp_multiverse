@@ -1,5 +1,7 @@
-lib.locale()
 Config = {}
+
+lib.locale()
+if not lib.checkDependency('ox_lib', '3.19.2') then return error("Please update OX LIB") end
 
 --[[
 

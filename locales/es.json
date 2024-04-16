@@ -1,0 +1,8 @@
+{
+    "MULIVERSE_TRAVEL_TO": "Has viajado a #%s",
+    "MULIVERSE_NOT_FOUND": "Multiverso no encontrado.",
+    "MULTIVERSE_ERROR": "Error al cambiar la dimensión.",
+    "INTERACT_TIMEOUT": "Estás interactuando demasiado rápido.",
+    "INTERACT": "Presiona [E] para viajar a #%s",
+    "INTERACT_VEHICLE_ERROR": "No puedes viajar en un vehículo."
+}

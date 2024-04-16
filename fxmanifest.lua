@@ -8,6 +8,10 @@ version "1.0.0"
 
 lua54 'yes'
 
+files {
+	'locales/*.json'
+}
+
 shared_scripts {
 	'@ox_lib/init.lua',
 	'shared/*.lua',
@@ -20,7 +24,3 @@ client_scripts {
 server_scripts {
 	'server/*.lua'
 }
-
-files {
-	'locales/*.json'
-  }
