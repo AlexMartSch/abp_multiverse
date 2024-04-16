@@ -99,17 +99,14 @@ SetupMarkers = function()
         local markerA_config = verse.PointA.Marker
         local markerB_config = verse.PointB.Marker
 
-        local markerA = lib.marker.new({
-            type = markerA_config.Type,
-            coords = verse.PointA.Position,
-            color = markerA_config.Color,
-        })
+        local configMarkerA = markerA_config
+        local configMarkerB = markerB_config
 
-        local markerB = lib.marker.new({
-            type = markerB_config.Type,
-            coords = verse.PointB.Position,
-            color = markerB_config.Color,
-        })
+        configMarkerA.coords = verse.PointA.Position
+        configMarkerB.coords = verse.PointB.Position
+
+        local markerA = lib.marker.new(configMarkerA)
+        local markerB = lib.marker.new(configMarkerB)
 
         local allow = verse.Allow
 

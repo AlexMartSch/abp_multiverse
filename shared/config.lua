@@ -49,8 +49,8 @@ Config.Verse = {
             Position = vector3(-394.3517, 1216.3078, 324.64175),
             Multiverse = 2,
             Marker = {
-                Type = 1,
-                color = { r = 255, g = 0, b = 0, a = 200 }
+                type = 1,
+                color = { r = 255, g = 150, b = 0, a = 200 }
             },
             DistanceView = 50
         },
@@ -58,8 +58,8 @@ Config.Verse = {
             Position = vector3(-399.313, 1198.8815, 324.64175),
             Multiverse = 0,
             Marker = {
-                Type = 1,
-                color = { r = 255, g = 0, b = 0, a = 200 }
+                type = 1,
+                color = { r = 255, g = 150, b = 0, a = 200 }
             },
             DistanceView = 50
         },
