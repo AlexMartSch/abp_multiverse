@@ -1,0 +1,8 @@
+{
+    "MULTIVERSE_TRAVEL_TO": "You have traveled to #%s",
+    "MULTIVERSE_NOT_FOUND": "Multiverse not found.",
+    "MULTIVERSE_ERROR": "Failed to change dimension.",
+    "INTERACT_TIMEOUT": "You are interacting too fast.",
+    "INTERACT": "Press [E] to travel to #%s",
+    "INTERACT_VEHICLE_ERROR": "You can't travel in a vehicle."
+}
