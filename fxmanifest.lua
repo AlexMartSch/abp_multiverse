@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-name "abp_dimensions"
+name "abp_multiverse"
 description "Dimensions manager for FiveM"
 author "AlexBanPer"
 version "1.0.0"
