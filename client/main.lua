@@ -25,6 +25,16 @@ CanInterct = function()
     return timeout < GetGameTimer()
 end
 
+TeleportToDimension = function(verseId, vehicleEntity, eventSync, eventParams)
+    local vehicleData = {
+        Entity = vehicleEntity,
+        Seats = vehicleEntity and GetVehicleModelNumberOfSeats(GetEntityModel(vehicleEntity)) or 0
+    }
+    return lib.callback.await('abp:Verse:SetPlayerWorldTo', 200, verseId, vehicleData, eventSync, eventParams)
+end
+
+exports("TeleportToDimension", TeleportToDimension)
+
 OnInteract = function(destPoint, verseId)
 
     if not CanInterct() then

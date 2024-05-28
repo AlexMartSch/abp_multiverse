@@ -83,8 +83,8 @@ function Verse:setEntityWorld(entityId, worldId)
     if worldId > -1 then
         local _entityWorld, _entityPosition = self:getEntityWorld(entityId)
 
-        if _entityWorld > -1 then
-            table.remove(Worlds[_entityWorld], _entityPosition)
+        if _entityWorld > -1 and Worlds[_entityWorld] then
+            table.remove(Worlds[_entityWorld].Entities, _entityPosition)
         end
 
         if Worlds[worldId] then
@@ -147,7 +147,7 @@ end)
 
 --- Events
 
-lib.callback.register('abp:Verse:SetPlayerWorldTo', function(source, worldId, vehicleData) 
+lib.callback.register('abp:Verse:SetPlayerWorldTo', function(source, worldId, vehicleData, playerSyncEvent, eventParams) 
     local src = source
 
     if vehicleData then
@@ -157,14 +157,26 @@ lib.callback.register('abp:Verse:SetPlayerWorldTo', function(source, worldId, ve
 
         if not ped then return false end
 
-        Multiverse:setEntityWorld(vehicle, worldId)
+        local cacheVehicleSeats = {}
+
+        Wait(100)
 
         for i = -1, seats, 1 do
             local ped = GetPedInVehicleSeat(vehicle, i)
             if ped > 0 then
-                local player = NetworkGetNetworkIdFromEntity(ped)
-                Multiverse:setPlayerWorld(player, worldId)
-                TaskWarpPedIntoVehicle(ped, vehicle, i)
+                cacheVehicleSeats[i] = ped
+            end
+        end
+
+        Multiverse:setEntityWorld(vehicle, worldId)
+
+        for seat, ped in pairs(cacheVehicleSeats) do
+            local player = NetworkGetEntityOwner(ped)
+            Multiverse:setPlayerWorld(player, worldId)
+            TaskWarpPedIntoVehicle(ped, vehicle, seat)
+
+            if playerSyncEvent then
+                TriggerClientEvent(playerSyncEvent, player, vehicle, eventParams)
             end
         end
 
